@@ -1,0 +1,3 @@
+/home/marta/Hpc_sqp/slower/build/CMakeFiles/bench_demo.dir
+/home/marta/Hpc_sqp/slower/build/CMakeFiles/edit_cache.dir
+/home/marta/Hpc_sqp/slower/build/CMakeFiles/rebuild_cache.dir
