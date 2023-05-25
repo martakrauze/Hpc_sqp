@@ -9,6 +9,7 @@
 #include <tbb/global_control.h>
 
 #include <iostream>
+#include <fstream>
 
 // #include <MakeRandomVector.hpp>
 
@@ -354,8 +355,9 @@ static void BM_Function(benchmark::State& state)
 
         }
     }
-    std::cout<<"Dziala";
-    //wypisz_x(x);
+    std::cout<<J<<"\n";
+    //std::cout<<"Dziala";
+    wypisz_x(x);
     //return 0;
 }
 

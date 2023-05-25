@@ -3,6 +3,7 @@
 #include <autodiff/forward/real/eigen.hpp>
 #include <autodiff/forward/dual.hpp>
 #include <iostream>
+#include <fstream>
 
 // #include <MakeRandomVector.hpp>
 
