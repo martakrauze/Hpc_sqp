@@ -2,6 +2,12 @@
 #include <autodiff/forward/real.hpp>
 #include <autodiff/forward/real/eigen.hpp>
 #include <autodiff/forward/dual.hpp>
+
+#include "benchmark/benchmark.h"
+
+#include <tbb/parallel_for.h>
+#include <tbb/global_control.h>
+
 #include <iostream>
 
 // #include <MakeRandomVector.hpp>
@@ -30,8 +36,8 @@ double T=1;
 // Liczba kroków czasowych
 const int n=16;
 
-// Maksymalna liczba iteracji algorytmu SQP
-int max_iter=300;
+// Liczba iteracji algorytmu SQP
+int max_iter=20;
 
 ////// Koniec parametrów //////
 
@@ -216,17 +222,19 @@ autodiff::real skalarny(autodiff::VectorXreal x, autodiff::VectorXreal y, int le
 
 int wypisz_x(autodiff::VectorXreal x)
 {
-    std::cout<<"# Created by Octave 8.2.0, Tue May 23 15:06:44 2023 CEST <marta@the-jungle>"<<"\n"<<"# name: x"<<"\n"<<"# type: matrix"<<"\n"<<"# rows: "<<9*n<<"\n"<<"# columns: 1"<<"\n";
+    std::ofstream out("results.m");
+    out<<"# Created by traj_opt"<<"\n"<<"# name: x"<<"\n"<<"# type: matrix"<<"\n"<<"# rows: "<<9*n<<"\n"<<"# columns: 1"<<"\n";
     for(int i=0; i<9*n; i++)
     {
-        std::cout<<" "<<x(i)<<"\n";
+        out<<" "<<x(i)<<"\n";
     }
+    out.close();
     return 0;
 }
 
 
 
-int main()
+static void BM_Function(benchmark::State& state)
 {
     M(0,0)=m1; M(1,1)=m1; M(2,2)=J1; M(3,3)=m2; M(4,4)=m2; M(5,5)=J2; M(6,6)=m3; M(7,7)=m3; M(8,8)=J3;
 
@@ -263,8 +271,8 @@ int main()
     theta20=0.6687*ones+t/T*(0.5246-(0.6687));
     theta30=-1.9897*ones+t/T*(-1.1228-(-1.9897));
 
-    autodiff::VectorXreal x0(9*n);
-    x0 << theta10,theta20,theta30,zeros,zeros,zeros,ones,ones,ones;
+    autodiff::VectorXreal x(9*n);
+    x << theta10,theta20,theta30,zeros,zeros,zeros,ones,ones,ones;
 
     //Przybliżenie początkowe mnożników lagrange'a
     autodiff::VectorXreal lambda(6*(n-1)+10);
@@ -284,13 +292,12 @@ int main()
     }
     
     //Deklaracja różnych rzeczy
-    autodiff::VectorXreal g_od_x;
-    autodiff::MatrixXreal g;
-    autodiff::real Jx;
-    autodiff::VectorXreal gJ;
-    autodiff::real lag;
-    autodiff::real Lag_od_x;
-    autodiff::MatrixXreal gl;
+    autodiff::VectorXreal g;
+    autodiff::MatrixXreal gx;
+    autodiff::real J;
+    autodiff::VectorXreal Jx;
+    autodiff::real L;
+    autodiff::MatrixXreal Lx;
     autodiff::MatrixXreal A(6*(n-1)+10+9*n,6*(n-1)+10+9*n);
     autodiff::VectorXreal b(6*(n-1)+10+9*n);
     autodiff::VectorXreal c(6*(n-1)+10+9*n);
@@ -306,40 +313,53 @@ int main()
         Lxx(i,i)=1.;
     }
 
-    //Zerowe obliczenie funkcji lagrange'a
-    gl=autodiff::gradient(Lagran, autodiff::wrt(x0), autodiff::at(x0,lambda), Lag_od_x);
+    //Zerowe obliczenie funkcji lagrange'a i jej gradientu
+    Lx=autodiff::gradient(Lagran, autodiff::wrt(x), autodiff::at(x,lambda), L);
 
-    //Iteracje algorytmu sqp
-    for(int iter=0; iter<20; iter++)
+    for(auto _ : state)
     {
+        //Iteracje algorytmu sqp
+        for(int iter=0; iter<max_iter; iter++)
+        {
+        
+        gx=autodiff::jacobian(f_ogr, autodiff::wrt(x), autodiff::at(x), g);
+
+        
+        Jx=autodiff::gradient(f_celu, autodiff::wrt(x), autodiff::at(x), J);
+        
+        //std::cout<<J<<"\n";
+
+        //Tworzenie macierzy i wektora prawych stron do układu równań
+        A<< Lxx, -gx.transpose(),
+            gx, zerosM;
+        b << -Jx, -g;
+
+        //Rozwiązywanie układu równań
+        c=A.colPivHouseholderQr().solve(b);
+        
+        //Nowe przybliżenie x i lambda
+        auto x_old=x;
+        x=x+c(Eigen::seq(0,9*n-1));
+        lambda=c(Eigen::seq(9*n,6*(n-1)+9+9*n));
+
+
+        auto sk=x-x_old;
+        auto Lx_old=Lx;
+        Lx=autodiff::gradient(Lagran, autodiff::wrt(x), autodiff::at(x,lambda), L);
+        auto yk=Lx-Lx_old;
+        auto Lxx_old=Lxx;
     
-    g=autodiff::jacobian(f_ogr, autodiff::wrt(x0), autodiff::at(x0), g_od_x);
+        //Nowe przybliżenie hessianu funkcji Lagrange'a:
+        Lxx=Lxx_old+yk*(yk.transpose())/(skalarny(sk,yk,9*n))-Lxx_old*sk*(sk.transpose())*Lxx_old/(skalarny(sk,Lxx_old*sk,9*n));
 
-    
-    gJ=autodiff::gradient(f_celu, autodiff::wrt(x0), autodiff::at(x0), Jx);
-    
-    //std::cout<<Jx<<"\n";
-
-    A<< Lxx, -g.transpose(),
-        g, zerosM;
-    b << -gJ, -g_od_x;
-
-    c=A.colPivHouseholderQr().solve(b);
-    
-    auto x=x0;
-    x0=x0+c(Eigen::seq(0,9*n-1));
-    lambda=c(Eigen::seq(9*n,6*(n-1)+9+9*n));
-    auto sk=x0-x;
-
-    auto glm1=gl;
-    gl=autodiff::gradient(Lagran, autodiff::wrt(x0), autodiff::at(x0,lambda), Lag_od_x);
-    auto yk=gl-glm1;
-    auto Lxxs=Lxx;
- 
-    Lxx=Lxxs+yk*(yk.transpose())/(skalarny(sk,yk,9*n))-Lxxs*sk*(sk.transpose())*Lxxs/(skalarny(sk,Lxxs*sk,9*n));
-
+        }
     }
-    //std::cout<<"Dziala";
-    wypisz_x(x0);
-    return 0;
+    std::cout<<"Dziala";
+    //wypisz_x(x);
+    //return 0;
 }
+
+// Register the function as a benchmark
+BENCHMARK(BM_Function)->Unit(benchmark::kSecond);
+// Run the benchmark
+BENCHMARK_MAIN();

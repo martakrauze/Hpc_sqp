@@ -1,0 +1,17 @@
+2023-05-25T15:36:48+02:00
+Running ./traj_opt
+Run on (8 X 4200 MHz CPU s)
+CPU Caches:
+  L1 Data 32 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 256 KiB (x4)
+  L3 Unified 6144 KiB (x1)
+Load Average: 0.61, 0.83, 0.98
+***WARNING*** CPU scaling is enabled, the benchmark real time measurements may be noisy and will incur extra overhead.
+Dziala------------------------------------------------------
+Benchmark            Time             CPU   Iterations
+------------------------------------------------------
+BM_Function        141 s           141 s             1
+
+16 kroków czasowych
+bez zasilacza

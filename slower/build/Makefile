@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named bench_demo
+# Target rules for targets named traj_opt
 
 # Build rule for target.
-bench_demo: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 bench_demo
-.PHONY : bench_demo
+traj_opt: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 traj_opt
+.PHONY : traj_opt
 
 # fast build rule for target.
-bench_demo/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bench_demo.dir/build.make CMakeFiles/bench_demo.dir/build
-.PHONY : bench_demo/fast
+traj_opt/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_opt.dir/build.make CMakeFiles/traj_opt.dir/build
+.PHONY : traj_opt/fast
 
 src/traj_opt.o: src/traj_opt.cpp.o
 .PHONY : src/traj_opt.o
 
 # target to build an object file
 src/traj_opt.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bench_demo.dir/build.make CMakeFiles/bench_demo.dir/src/traj_opt.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_opt.dir/build.make CMakeFiles/traj_opt.dir/src/traj_opt.cpp.o
 .PHONY : src/traj_opt.cpp.o
 
 src/traj_opt.i: src/traj_opt.cpp.i
@@ -142,7 +142,7 @@ src/traj_opt.i: src/traj_opt.cpp.i
 
 # target to preprocess a source file
 src/traj_opt.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bench_demo.dir/build.make CMakeFiles/bench_demo.dir/src/traj_opt.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_opt.dir/build.make CMakeFiles/traj_opt.dir/src/traj_opt.cpp.i
 .PHONY : src/traj_opt.cpp.i
 
 src/traj_opt.s: src/traj_opt.cpp.s
@@ -150,7 +150,7 @@ src/traj_opt.s: src/traj_opt.cpp.s
 
 # target to generate assembly for a file
 src/traj_opt.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bench_demo.dir/build.make CMakeFiles/bench_demo.dir/src/traj_opt.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/traj_opt.dir/build.make CMakeFiles/traj_opt.dir/src/traj_opt.cpp.s
 .PHONY : src/traj_opt.cpp.s
 
 # Help Target
@@ -161,7 +161,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... bench_demo"
+	@echo "... traj_opt"
 	@echo "... src/traj_opt.o"
 	@echo "... src/traj_opt.i"
 	@echo "... src/traj_opt.s"

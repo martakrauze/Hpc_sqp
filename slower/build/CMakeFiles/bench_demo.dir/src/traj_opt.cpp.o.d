@@ -415,4 +415,160 @@ CMakeFiles/bench_demo.dir/src/traj_opt.cpp.o: \
  /usr/include/autodiff/common/eigen.hpp \
  /usr/include/autodiff/common/classtraits.hpp \
  /usr/include/autodiff/forward/dual.hpp \
- /usr/include/autodiff/forward/dual/dual.hpp
+ /usr/include/autodiff/forward/dual/dual.hpp \
+ /usr/include/benchmark/benchmark.h /usr/include/c++/13.1.1/map \
+ /usr/include/c++/13.1.1/bits/stl_tree.h \
+ /usr/include/c++/13.1.1/bits/stl_map.h \
+ /usr/include/c++/13.1.1/bits/stl_multimap.h /usr/include/c++/13.1.1/set \
+ /usr/include/c++/13.1.1/bits/stl_set.h \
+ /usr/include/c++/13.1.1/bits/stl_multiset.h \
+ /usr/include/benchmark/export.h /usr/include/tbb/parallel_for.h \
+ /usr/include/oneapi/tbb/parallel_for.h \
+ /usr/include/oneapi/tbb/detail/_config.h \
+ /usr/include/oneapi/tbb/detail/_export.h \
+ /usr/include/oneapi/tbb/detail/_namespace_injection.h \
+ /usr/include/oneapi/tbb/detail/_exception.h \
+ /usr/include/oneapi/tbb/detail/_config.h \
+ /usr/include/oneapi/tbb/detail/_task.h \
+ /usr/include/oneapi/tbb/detail/_assert.h \
+ /usr/include/oneapi/tbb/detail/_template_helpers.h \
+ /usr/include/oneapi/tbb/detail/_utils.h \
+ /usr/include/oneapi/tbb/detail/_machine.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/immintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/x86gprintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/ia32intrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/adxintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/bmiintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/bmi2intrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/cetintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/cldemoteintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/clflushoptintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/clwbintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/clzerointrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/cmpccxaddintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/enqcmdintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/fxsrintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/lzcntintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/lwpintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/movdirintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/mwaitintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/mwaitxintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/pconfigintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/popcntintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/pkuintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/prfchiintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/raointintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/rdseedintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/rtmintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/serializeintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/sgxintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/tbmintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/tsxldtrkintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/uintrintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/waitpkgintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/wbnoinvdintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/xsaveintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/xsavecintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/xsaveoptintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/xsavesintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/xtestintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/hresetintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/pmmintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/tmmintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/smmintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/wmmintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avxintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avxvnniintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avxifmaintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avxvnniint8intrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx2intrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512fintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512erintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512pfintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512cdintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512vlintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512bwintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512dqintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512vlbwintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512vldqintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512ifmaintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512ifmavlintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512vbmiintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512vbmivlintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx5124fmapsintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx5124vnniwintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512vpopcntdqintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512vbmi2intrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512vbmi2vlintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512vnniintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512vnnivlintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512vpopcntdqvlintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512bitalgintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512vp2intersectintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512vp2intersectvlintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512fp16intrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512fp16vlintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/shaintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/fmaintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/f16cintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/gfniintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/vaesintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/vpclmulqdqintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512bf16vlintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avx512bf16intrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/avxneconvertintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/amxtileintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/amxint8intrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/amxbf16intrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/amxcomplexintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/prfchwintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/keylockerintrin.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/amxfp16intrin.h \
+ /usr/include/c++/13.1.1/thread /usr/include/c++/13.1.1/stop_token \
+ /usr/include/c++/13.1.1/bits/std_thread.h \
+ /usr/include/c++/13.1.1/bits/unique_ptr.h \
+ /usr/include/c++/13.1.1/semaphore \
+ /usr/include/c++/13.1.1/bits/semaphore_base.h \
+ /usr/include/c++/13.1.1/bits/chrono.h /usr/include/c++/13.1.1/ratio \
+ /usr/include/c++/13.1.1/ctime \
+ /usr/include/c++/13.1.1/bits/parse_numbers.h \
+ /usr/include/c++/13.1.1/bits/atomic_timed_wait.h \
+ /usr/include/c++/13.1.1/bits/this_thread_sleep.h /usr/include/sys/time.h \
+ /usr/include/semaphore.h /usr/include/bits/semaphore.h \
+ /usr/include/c++/13.1.1/memory \
+ /usr/include/c++/13.1.1/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/13.1.1/bits/align.h \
+ /usr/include/c++/13.1.1/bits/shared_ptr.h \
+ /usr/include/c++/13.1.1/bits/shared_ptr_base.h \
+ /usr/include/c++/13.1.1/bits/allocated_ptr.h \
+ /usr/include/c++/13.1.1/ext/concurrence.h \
+ /usr/include/c++/13.1.1/bits/shared_ptr_atomic.h \
+ /usr/include/c++/13.1.1/backward/auto_ptr.h \
+ /usr/include/c++/13.1.1/bits/ranges_uninitialized.h \
+ /usr/include/c++/13.1.1/pstl/glue_memory_defs.h \
+ /usr/include/c++/13.1.1/iterator \
+ /usr/include/c++/13.1.1/bits/stream_iterator.h \
+ /usr/include/oneapi/tbb/detail/_small_object_pool.h \
+ /usr/include/oneapi/tbb/profiling.h \
+ /usr/include/oneapi/tbb/detail/_string_resource.h \
+ /usr/include/c++/13.1.1/mutex /usr/include/c++/13.1.1/bits/unique_lock.h \
+ /usr/include/oneapi/tbb/detail/_small_object_pool.h \
+ /usr/include/oneapi/tbb/profiling.h \
+ /usr/include/oneapi/tbb/partitioner.h \
+ /usr/include/oneapi/tbb/detail/_aligned_space.h \
+ /usr/include/oneapi/tbb/detail/_utils.h \
+ /usr/include/oneapi/tbb/detail/_template_helpers.h \
+ /usr/include/oneapi/tbb/detail/_range_common.h \
+ /usr/include/oneapi/tbb/cache_aligned_allocator.h \
+ /usr/include/c++/13.1.1/memory_resource \
+ /usr/include/c++/13.1.1/shared_mutex \
+ /usr/include/oneapi/tbb/task_group.h \
+ /usr/include/oneapi/tbb/detail/_assert.h \
+ /usr/include/oneapi/tbb/detail/_intrusive_list_node.h \
+ /usr/include/oneapi/tbb/detail/_task_handle.h \
+ /usr/include/oneapi/tbb/detail/_task.h \
+ /usr/include/oneapi/tbb/task_arena.h \
+ /usr/include/oneapi/tbb/detail/_attach.h /usr/include/oneapi/tbb/info.h \
+ /usr/include/oneapi/tbb/blocked_range.h \
+ /usr/include/oneapi/tbb/version.h /usr/include/tbb/global_control.h \
+ /usr/include/oneapi/tbb/global_control.h

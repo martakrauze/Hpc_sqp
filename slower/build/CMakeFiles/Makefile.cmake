@@ -65,5 +65,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/bench_demo.dir/DependInfo.cmake"
+  "CMakeFiles/traj_opt.dir/DependInfo.cmake"
   )
