@@ -152,7 +152,7 @@ autodiff::VectorXreal dynamics_function(autodiff::VectorXreal x,autodiff::Vector
    return r;
 }
 
-
+/*
 autodiff::real f_celu(autodiff::VectorXreal& x)
 {
     autodiff::real obj = 0;
@@ -167,6 +167,21 @@ autodiff::real f_celu(autodiff::VectorXreal& x)
             obj = obj + 1./2. * h * (u1(i)*u1(i) + u1(i+1)*u1(i+1) + u2(i)*u2(i) + u2(i+1)*u2(i+1) + u3(i)*u3(i) + u3(i+1)*u3(i+1));
         }
     });
+    return obj;
+}
+*/
+
+autodiff::real f_celu(autodiff::VectorXreal& x)
+{
+    autodiff::real obj = 0;
+    autodiff::VectorXreal u1 = x(Eigen::seq(6*n,7*n-1));
+    autodiff::VectorXreal u2 = x(Eigen::seq(7*n,8*n-1));
+    autodiff::VectorXreal u3 = x(Eigen::seq(8*n,9*n-1));
+
+    for(int i=0; i<n-1; i++)
+    {
+        obj = obj + 1./2. * h * (u1(i)*u1(i) + u1(i+1)*u1(i+1) + u2(i)*u2(i) + u2(i+1)*u2(i+1) + u3(i)*u3(i) + u3(i+1)*u3(i+1));
+    }
     return obj;
 }
 
