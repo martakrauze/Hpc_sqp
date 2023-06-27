@@ -663,6 +663,8 @@ CMakeFiles/traj_opt.dir/src/traj_opt.cpp.o
  /usr/include/oneapi/tbb/info.h
  /usr/include/oneapi/tbb/blocked_range.h
  /usr/include/oneapi/tbb/version.h
+ /usr/include/tbb/parallel_reduce.h
+ /usr/include/oneapi/tbb/parallel_reduce.h
  /usr/include/tbb/global_control.h
  /usr/include/oneapi/tbb/global_control.h
  /usr/include/c++/13.1.1/fstream

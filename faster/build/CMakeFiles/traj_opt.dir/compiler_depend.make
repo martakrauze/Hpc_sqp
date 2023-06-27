@@ -662,6 +662,8 @@ CMakeFiles/traj_opt.dir/src/traj_opt.cpp.o: /home/marta/Hpc_sqp/faster/src/traj_
   /usr/include/oneapi/tbb/info.h \
   /usr/include/oneapi/tbb/blocked_range.h \
   /usr/include/oneapi/tbb/version.h \
+  /usr/include/tbb/parallel_reduce.h \
+  /usr/include/oneapi/tbb/parallel_reduce.h \
   /usr/include/tbb/global_control.h \
   /usr/include/oneapi/tbb/global_control.h \
   /usr/include/c++/13.1.1/fstream \
@@ -676,6 +678,8 @@ CMakeFiles/traj_opt.dir/src/traj_opt.cpp.o: /home/marta/Hpc_sqp/faster/src/traj_
 /usr/include/c++/13.1.1/x86_64-pc-linux-gnu/bits/basic_file.h:
 
 /usr/include/c++/13.1.1/bits/codecvt.h:
+
+/usr/include/tbb/parallel_reduce.h:
 
 /usr/include/oneapi/tbb/detail/_attach.h:
 
@@ -1174,6 +1178,8 @@ CMakeFiles/traj_opt.dir/src/traj_opt.cpp.o: /home/marta/Hpc_sqp/faster/src/traj_
 /usr/include/asm-generic/errno-base.h:
 
 /usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h:
+
+/usr/include/oneapi/tbb/parallel_reduce.h:
 
 /usr/include/eigen3/Eigen/src/Core/products/SelfadjointRank2Update.h:
 

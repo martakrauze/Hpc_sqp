@@ -1,4 +1,6 @@
-model.png
+*.png
+*.odt
+*.ods
 prezentation.aux
 prezentation.log
 prezentation.nav

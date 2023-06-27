@@ -6,6 +6,7 @@
 #include "benchmark/benchmark.h"
 
 #include <tbb/parallel_for.h>
+#include <tbb/parallel_reduce.h>
 #include <tbb/global_control.h>
 
 #include <iostream>
@@ -160,17 +161,47 @@ autodiff::real f_celu(autodiff::VectorXreal& x)
     autodiff::VectorXreal u2 = x(Eigen::seq(7*n,8*n-1));
     autodiff::VectorXreal u3 = x(Eigen::seq(8*n,9*n-1));
 
-    tbb::parallel_for(tbb::blocked_range<int>(0,n-1),[&](tbb::blocked_range<int> r)
+    obj=tbb::parallel_reduce(
+        tbb::blocked_range<int>(0,n-1), 0.0,
+                 [&](tbb::blocked_range<int> r, double tmp)
     {
         for (int i=r.begin(); i<r.end(); ++i)
         {
-            obj = obj + 1./2. * h * (u1(i)*u1(i) + u1(i+1)*u1(i+1) + u2(i)*u2(i) + u2(i+1)*u2(i+1) + u3(i)*u3(i) + u3(i+1)*u3(i+1));
+            tmp +=  1./2. * h * double(u1(i)*u1(i) + u1(i+1)*u1(i+1) + u2(i)*u2(i) + u2(i+1)*u2(i+1) + u3(i)*u3(i) + u3(i+1)*u3(i+1));
         }
-    });
+        return tmp;
+    }, std::plus<double>()
+    );
     return obj;
+    //return 0;
 }
 */
 
+
+autodiff::real f_celu(autodiff::VectorXreal& x)
+{
+    autodiff::real obj = 0;
+    autodiff::VectorXreal u1 = x(Eigen::seq(6*n,7*n-1));
+    autodiff::VectorXreal u2 = x(Eigen::seq(7*n,8*n-1));
+    autodiff::VectorXreal u3 = x(Eigen::seq(8*n,9*n-1));
+
+    obj=tbb::parallel_reduce(
+        tbb::blocked_range<int>(0,n-1), autodiff::real{0.0},
+                 [&](const tbb::blocked_range<int>& r, const autodiff::real& tmp)
+    {
+        auto local_red = tmp;
+        for (int i=r.begin(); i<r.end(); ++i)
+        {
+            local_red +=  1./2. * h * (u1(i)*u1(i) + u1(i+1)*u1(i+1) + u2(i)*u2(i) + u2(i+1)*u2(i+1) + u3(i)*u3(i) + u3(i+1)*u3(i+1));
+        }
+        return local_red;
+    }, std::plus<>()
+    );
+    return obj;
+    //return 0;
+}
+
+/*
 autodiff::real f_celu(autodiff::VectorXreal& x)
 {
     autodiff::real obj = 0;
@@ -184,6 +215,7 @@ autodiff::real f_celu(autodiff::VectorXreal& x)
     }
     return obj;
 }
+*/
 
 autodiff::VectorXreal f_ogr(autodiff::VectorXreal& x)
 {
@@ -232,6 +264,7 @@ autodiff::real Lagran(autodiff::VectorXreal& x, autodiff::VectorXreal& lambda)
     return ret;
 }
 
+/*
 autodiff::real skalarny(autodiff::VectorXreal x, autodiff::VectorXreal y, int len)
 {
     autodiff::real ret=0;
@@ -239,6 +272,23 @@ autodiff::real skalarny(autodiff::VectorXreal x, autodiff::VectorXreal y, int le
     {
         ret=ret+x(i)*y(i);
     }
+    return ret;
+}
+*/
+
+autodiff::real skalarny(autodiff::VectorXreal x, autodiff::VectorXreal y, int len)
+{
+    auto ret=tbb::parallel_reduce(
+        tbb::blocked_range<int>(0,len),0.0,
+                 [&](tbb::blocked_range<int> r, double tmp)
+    {
+    for (int i=r.begin(); i<r.end(); ++i)
+    {
+        tmp= tmp + double(x(i)*y(i));
+    }
+    return tmp;
+    }, std::plus<double>()
+    );
     return ret;
 }
 
@@ -258,8 +308,8 @@ int wypisz_x(autodiff::VectorXreal x)
 
 static void BM_Function(benchmark::State& state)
 {
-    //int max_threds=state.range(0);
-    //tbb::global_control aaa(tbb::global_control::max_allowed_parallelism, max_threds);
+    int max_threds=state.range(0);
+    tbb::global_control aaa(tbb::global_control::max_allowed_parallelism, max_threds);
 
     M(0,0)=m1; M(1,1)=m1; M(2,2)=J1; M(3,3)=m2; M(4,4)=m2; M(5,5)=J2; M(6,6)=m3; M(7,7)=m3; M(8,8)=J3;
 
@@ -386,7 +436,7 @@ static void BM_Function(benchmark::State& state)
 }
 
 // Register the function as a benchmark
-//BENCHMARK(BM_Function)->Unit(benchmark::kSecond)->Range(2, 4);
-BENCHMARK(BM_Function)->Unit(benchmark::kSecond);
+BENCHMARK(BM_Function)->Unit(benchmark::kSecond)->RangeMultiplier(2)->Range(1, 4);
+//BENCHMARK(BM_Function)->Unit(benchmark::kSecond);
 // Run the benchmark
 BENCHMARK_MAIN();
