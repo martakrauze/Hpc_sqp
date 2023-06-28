@@ -153,31 +153,6 @@ autodiff::VectorXreal dynamics_function(autodiff::VectorXreal x,autodiff::Vector
    return r;
 }
 
-/*
-autodiff::real f_celu(autodiff::VectorXreal& x)
-{
-    autodiff::real obj = 0;
-    autodiff::VectorXreal u1 = x(Eigen::seq(6*n,7*n-1));
-    autodiff::VectorXreal u2 = x(Eigen::seq(7*n,8*n-1));
-    autodiff::VectorXreal u3 = x(Eigen::seq(8*n,9*n-1));
-
-    obj=tbb::parallel_reduce(
-        tbb::blocked_range<int>(0,n-1), 0.0,
-                 [&](tbb::blocked_range<int> r, double tmp)
-    {
-        for (int i=r.begin(); i<r.end(); ++i)
-        {
-            tmp +=  1./2. * h * double(u1(i)*u1(i) + u1(i+1)*u1(i+1) + u2(i)*u2(i) + u2(i+1)*u2(i+1) + u3(i)*u3(i) + u3(i+1)*u3(i+1));
-        }
-        return tmp;
-    }, std::plus<double>()
-    );
-    return obj;
-    //return 0;
-}
-*/
-
-
 autodiff::real f_celu(autodiff::VectorXreal& x)
 {
     autodiff::real obj = 0;
@@ -198,24 +173,7 @@ autodiff::real f_celu(autodiff::VectorXreal& x)
     }, std::plus<>()
     );
     return obj;
-    //return 0;
 }
-
-/*
-autodiff::real f_celu(autodiff::VectorXreal& x)
-{
-    autodiff::real obj = 0;
-    autodiff::VectorXreal u1 = x(Eigen::seq(6*n,7*n-1));
-    autodiff::VectorXreal u2 = x(Eigen::seq(7*n,8*n-1));
-    autodiff::VectorXreal u3 = x(Eigen::seq(8*n,9*n-1));
-
-    for(int i=0; i<n-1; i++)
-    {
-        obj = obj + 1./2. * h * (u1(i)*u1(i) + u1(i+1)*u1(i+1) + u2(i)*u2(i) + u2(i+1)*u2(i+1) + u3(i)*u3(i) + u3(i+1)*u3(i+1));
-    }
-    return obj;
-}
-*/
 
 autodiff::VectorXreal f_ogr(autodiff::VectorXreal& x)
 {
@@ -263,18 +221,6 @@ autodiff::real Lagran(autodiff::VectorXreal& x, autodiff::VectorXreal& lambda)
     ret=f_celu(x)+a;
     return ret;
 }
-
-/*
-autodiff::real skalarny(autodiff::VectorXreal x, autodiff::VectorXreal y, int len)
-{
-    autodiff::real ret=0;
-    for(int i=0; i<len; i++)
-    {
-        ret=ret+x(i)*y(i);
-    }
-    return ret;
-}
-*/
 
 autodiff::real skalarny(autodiff::VectorXreal x, autodiff::VectorXreal y, int len)
 {
